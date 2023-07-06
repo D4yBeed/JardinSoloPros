@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,800&display=swap');
+
+:root{
+    --green:#27ae60;
+    --dark-color:#219150; 
+    --black:#444;
+    --light-color:#666;
+    --border:.1rem solid rgba(0,0,0,.1);
+    --border-hover:.1rem solid var(--black);
+    --box-shadow:0 .5rem 1rem rgba(0,0,0,.1);
+}
+
+/* CSS SECCIÓN PRODUCTOS */
+.contenedor{
+    padding: 8rem 4rem 4rem 4rem;
+    
+}
+
+.contenedor-productos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4rem;
+    text-align: center;
+    
+}
+
+.producto{
+    max-width: 230px;
+    margin-bottom: 2rem;
+    box-shadow: 0 .1rem .2rem #27ae60;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 15px;
+}
+
+.producto img{
+    max-width: 100%;
+    border-radius: 15px;
+}
+
+.producto div{
+    position: relative;
+}
+
+.producto div p{
+    position: absolute;
+    top: 1rem;
+    right: 0px;
+    background-color: #27ae60;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 10px 0 0 15px;
+}
+
+.titulo-producto{
+    font-size: 1.5rem;
+    line-height: 1.2rem;
+    margin-top: 0.5rem;
+}
+
+.precio-del-producto{
+    font-weight: 600;
+    margin-top: .4rem;
+    font-size: 25px;
+}
+.cantidad{
+    font-size: 12px;
+}
+.boton-añadir-carrito{
+    text-decoration: none;
+    font-size: 15px;
+    background-color: #219150;
+    display: block;
+    padding: 1rem;
+    color: #fff;
+    text-transform: uppercase;
+    margin-top: 1rem;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+.boton-añadir-carrito:hover{
+    background-color: #fff;
+    color: #219150;
+    border: solid .3rem #219150;
+    font-weight: 600;
+}
+
+/* FOOTER */
+
+footer{
+    background-color: #0A6C5b;
+    color: #f3f3f3;
+    padding: 1rem;
+    text-align: center;
+    line-height: 1.4;
+}
+
+
+@media (max-width: 600px){
+    header{
+        padding: 1rem 2rem;
+    }
+
+    .icono-carrito img{
+        max-height: 3.5rem;
+    }
+
+    .productos-en-carrito{
+        width: 100%;
+    }
+
+    .contenedor {
+        padding: 18rem 2rem 4rem 2rem;
+    }
+
+    .contenedor-productos{
+        gap: 1rem;
+    }
+}

@@ -1,0 +1,125 @@
+{% extends 'core/base.html' %}
+{% load static%}
+
+{% block content%}
+<link rel="stylesheet" href="{% static 'semillas.css' %}">
+
+  <!-- home section starts -->
+
+  <section class="home" id="home">
+
+    <div class="row">
+
+      <div class="content">
+        <h3>hasta 75% de descuento</h3>
+        <p>Encuentra todo tipo de herramientas para el cuidado de tu jardín accesorios para limpieza y recolección de hojas, desmalezadores, palas y tijeras y tijerones para poda.
+           Puedes potenciar el crecimiento de tu jardín con nuestros sistemas de riego.</p>
+        <a href="{% url 'herramientas' %}" class="btn">Compra ahora</a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- home section ends -->
+
+  <!-- icons section starts -->
+
+  <section class="icons-container">
+
+    <div class="icons">
+      <i class="fas fa-plane"></i>
+      <div class="content">
+        <h3>Envío gratis</h3>
+        <p>Pedido superior a $25.000</p>
+      </div>
+    </div>
+
+    <div class="icons">
+      <i class="fas fa-loock"></i>
+      <div class="content">
+        <h3>Pago seguro</h3>
+        <p>100% Pago Seguro</p>
+      </div>
+    </div>
+
+    <div class="icons">
+      <i class="fas fa-redo-alt"></i>
+      <div class="content">
+        <h3>Devoluciones fáciles</h3>
+        <p>10 Días Devoluciones</p>
+      </div>
+    </div>
+
+    <div class="icons">
+      <i class="fas fa-headset"></i>
+      <div class="content">
+        <h3>Soporte 24/7</h3>
+        <p>Llámenos en cualquier momento</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- icons section ends -->
+
+<!-- parte de los productos -->
+    <section class="contenedor">
+      <h1 class="heading"> <span>Productos Destacados</span></h1> 
+      {% for plantas in planta %}
+      {% load humanize %}
+      <div class="contenedor-productos">
+          <div class="producto">
+              <div>
+                  <img src="{{ plantas.imagen }}" alt="SEMILLA REPOLLO (5 GR) ANASAC">
+                  <!-- <p><span>{{ plantas.oferta }}</span></p> -->
+              </div>
+              <p class="titulo-producto">{{ plantas.detalle }}</p><br>
+              <span class="tachado">{{ plantas.tachado }}</span>
+              <p class="precio-del-producto">$<span class="precio-producto">{{ plantas.precio  | intcomma}}</span></p> <br>
+              <span class="cantidad">(Cantidad: {{ plantas.stock }})</span>
+              <a href="{% url 'addtocar' plantas.codigo %}" class="boton-añadir-carrito" data-id="1">Agregar al carrito</a>
+          </div>
+      {% endfor %}
+    </section>
+  <!-- featured section ends -->
+
+
+  <!-- newsletter section starts -->
+
+  <section class="newsletter">
+
+    <form action="">
+      <h3>Suscríbete para recibir las últimas actualizaciones</h3>
+      <input type="email" name="" placeholder="Ingresa tu email" id="" class="box">
+      <input type="submit" value="subscribe" class="btn">
+    </form>
+
+  </section>
+
+  <!-- newsletter section ends -->
+
+  <!-- deal section starts -->
+
+  <section class="deal">
+
+    <div class="content">
+      <h3>Oferta del dia </h3>
+      <h1>Hasta 50% de descuento en semillas de hortalizas</h1>
+      <p>Encuentra semillas de todo tipo de hortalizas para plantar y cosechar en tu jardín: Semillas de espinaca, lechuga, puerro, tomate, pepino, pimentón, entre muchos otros.
+         Adquiere fertilizantes para potenciar el crecimiento y mejorar tu cosecha.</p>
+      <a href="{% url 'semillas' %}" class="btn">Compra ahora</a>
+    </div>
+
+    <div class="image">
+      <img src="{% static 'img/Inicio/herramientas-jardineria.jpg.jpg' %}" alt="">
+    </div>
+
+  </section>
+
+  <!-- deal section ends -->
+
+</section>
+{% endblock %}
+
+

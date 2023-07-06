@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1 class="heading-pag"><span>Ingresar</span></h1> 
+  <section>
+    <div>
+      <form action="" method="post" class="form-login">
+        {% csrf_token %}
+        <span class="input-span">
+        <label for="email" class="label">usuario</label>
+        <input type="username" name="username" id="username"></span>
+        <span class="input-span">
+        <label for="password" class="label">contraseña</label>
+        <input type="password" name="password" id="password"></span>
+        <span class="span"><a href="#">olvidaste tu contraseña!</a></span>
+        <button type="submit" class="btn btn-success">Iniciar Sesion</button>
+        <span class="span">¿No tienes una cuenta? <a href="{% url 'registro' %}">Registrarse</a></span>
+      </form>
+      <!-- <form action="" method="post">
+        {% csrf_token %}
+        {{ form | crispy}}
+        <button type="submit" class="btn btn-success">Ingresar</button>
+      </form> -->
+    </div>
+  </section>
+{% endblock %}
+

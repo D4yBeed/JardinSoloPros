@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block head %}
+<script src="{% static 'script.js' %}"></script>
+{% endblock  %}
+
+{% block content%}
+<link rel="stylesheet" href="{% static 'semillas.css' %}">
+<section class="contenedor">
+    {% for herramientas in herramienta %}
+    {% load humanize %}
+    <div class="contenedor-productos">
+        <div class="producto">
+            <div>
+                <img src="{{ herramientas.imagen }}" alt="SEMILLA REPOLLO (5 GR) ANASAC">
+            </div>
+            <p class="titulo-producto">{{ herramientas.detalle }}</p><br>
+            <span class="tachado"> {{ herramientas.tachado }} </span>
+            <p class="precio-del-producto">$<span class="precio-producto">{{ herramientas.precio | intcomma }}</span></p> <br>
+            <span class="cantidad">(Cantidad: {{ herramientas.stock }})</span>
+            <a href="{% url 'addtocar' herramientas.codigo %}" class="boton-añadir-carrito" data-id="1">Agregar al carrito</a>
+        </div>
+    {% endfor %}
+  </section>
+{% endblock %}

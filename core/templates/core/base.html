@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jardin Solo Pros</title>
+  <link rel="icon" href="{% static 'img/inicio/Jardineria2.0.a.ico' %}">
+  <link rel="stylesheet" href="{% static 'style.css' %}"> 
+
+  <!-- font awesome link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+</head>
+
+
+
+<body>
+
+  <!-- header section starts -->
+  <header class="header">
+
+    <div class="header-1">
+      <img src="{% static 'img/inicio/jardineria2.0.a.png' %}" alt="">
+      <a href="{% url 'home' %}" class="logo"></i> Jardin Solo Pros</a>
+
+      <form action="" class="search-bucar">
+        <input type="search" name="" placeholder="Buscar aqui..." id="search0-box">
+        <label for="search-box" class="fas fa-search"></label>
+      </form>
+
+      <div class="icons">
+        <div id="search-btn" class="fas fa-search"></div>
+        <a href="{% url 'carrito' %}" class="fas fa-shopping-cart"></a>
+      </div>
+
+      <div class="usuario">
+        {% if user.is_authenticated %}
+        <h1 class="ingreso" >Hola, {{ user.username | upper }}</h1>
+              {% if suscrito %}
+                  ✅
+              {% else %}
+                  ⛔
+              {% endif %}
+          <a href="{% url 'logout' %}">Salir</a>
+        {% else %}
+          <a href="{% url 'login' %}">Login</a>
+          <a href="{% url 'registro' %}">Registro</a>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="header-2">
+      <nav class="navbar">
+        <a href="{% url 'home' %}">Inicio</a>
+        <a href="{% url 'herramientas' %}">Herramientas</a>
+        <a href="{% url 'semillas' %}">Semillas</a>
+        <a href="{% url 'historial' %}">Mis compras</a>
+        <a href="#arrivals">Nosotros</a>
+        <a href="#reviews">Contacto</a>
+      </nav>
+    </div>
+
+  </header>
+  <!-- header section ends -->
+
+  <!-- bottom navbar -->
+
+  <nav class="bottom-navbar">
+    <a href="{% url 'home' %}" class="fas fa-home"></a>
+    <a href="#featured" class="fas fa-list"></a>
+    <a href="#arrivals" class="fas fa-tags"></a>
+    <a href="#reviews" class="fas fa-comments"></a>
+    <a href="#blog" class="fas fa-blogs"></a>
+  </nav>
+</body>
+
+
+{% block content %}
+{% endblock %}
+
+<section class="footer">
+
+    <div class="box-container">
+  
+      <div class="box">
+        <h3>Ubicaciones</h3>
+        <a href="#"><i class="fas fa-map-marker-alt"></i> Santiago</a>
+        <a href="#"><i class="fas fa-map-marker-alt"></i> Talagante</a>
+        <a href="#"><i class="fas fa-map-marker-alt"></i> El paico</a>
+        <a href="#"><i class="fas fa-map-marker-alt"></i> Melipilla</a>
+        <a href="#"><i class="fas fa-map-marker-alt"></i> Pomaire</a>
+      </div>
+  
+      <div class="box">
+        <h3>Enlaces Rapidos</h3>
+        <a href="#"> <i class="fas fa-arrow-right"> </i> Inicio</a>
+        <a href="#"> <i class="fas fa-arrow-right"> </i> Productos</a>
+        <a href="#"> <i class="fas fa-arrow-right"> </i> Nosotros</a>
+        <a href="#"> <i class="fas fa-arrow-right"> </i> Contacto</a>
+      </div>
+  
+      <div class="box">
+        <h3>Enlaces adicionales</h3>
+        <a href="#"> <i class="fas fa-arrow-right"> </i> informacion de cuenta</a>
+        <a href="#"> <i class="fas fa-arrow-right"> </i> artículos pedidos</a>
+        <a href="#"> <i class="fas fa-arrow-right"> </i> política de privacidad</a>
+        <a href="#"> <i class="fas fa-arrow-right"> </i> método de pago</a>
+        <a href="#"> <i class="fas fa-arrow-right"> </i> Nuestros servicios</a>
+      </div> 
+  
+      <div class="box">
+        <h3>Informacion Y Contacto</h3>
+        <a href="#"> <i class="fas fa-phone"> </i> +569 3423 4242</a>
+        <a href="#"> <i class="fas fa-phone"> </i> 2239439492</a>
+        <a href="#"> <i class="fas fa-envelope"> </i> jardinSoloPro@jardines.cl</a>
+        <img src="{% static 'img/mapa.png' %}" class="map" alt="">
+      </div> 
+  
+    </div>
+  
+    <div class="share">
+      <a href="#" class="fab fa-facebook-f"></a>
+      <a href="#" class="fab fa-twitter"></a>
+      <a href="#" class="fab fa-instagram"></a>
+    </div>
+    <div class="credit"> Creado por <span>Jardin Solo Pros</span> Todos los derechos reservados </div>
+</section> 
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <!-- custom java file link -->
+<script src="{% static 'script.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+{% if messages %}
+  {% for m in messages %}
+      <script>
+        Swal.fire({
+          "title": "Felicitaciones",
+          "text": "{{m}}",
+          "icon":"success"
+        })
+      </script>
+  {% endfor %}
+{% endif %}

@@ -1,0 +1,35 @@
+{% extends 'core/base.html' %}
+{% load static%}
+
+{% block content%}
+<h1 class="heading-pag"><span>Detalle de Mis compras</span></h1> 
+<section class="contenedor">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>CLIENTE</th>
+          <th>VENTA</th>
+          <th>PRODUCTO</th>
+          <th>CANTIDAD</th>
+          <th>PRECIO</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for detalle in detalles %} 
+            <tr>
+              <td>{{ detalle.id }}</td>
+              <td>{{ detalle.cliente }}</td>
+              <td>{{ detalle.venta }}</td>
+              <td>{{ detalle.producto }}</td>
+              <td>{{ detalle.cantidad }}</td>
+              <td>{{ detalle.precio }}</td>
+            </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</section>
+{% endblock %}
+
+
